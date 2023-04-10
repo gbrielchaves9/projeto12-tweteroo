@@ -5,10 +5,8 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const usuario =[{
-	username: 'bobesponja', 
-	avatar: "https://cdn.shopify.com/s/files/1/0150/0643/3380/files/Screen_Shot_2019-07-01_at_11.35.42_AM_370x230@2x.png" 
-}];
+const usuario =[];
+const msgs = [];
 
 app.post('/sign-up' , (req , res)=>{
     const {username , avatar } = req.body;
@@ -17,5 +15,12 @@ app.post('/sign-up' , (req , res)=>{
 
     res.send("OK")
 })
+app.post('/tweets' , (req , res)=>{
+   const twee =req.body
+   const verificaLogin  = usuario.find(cadastro => cadastro.username === twee.username)
+   if(!verificaLogin) res.send("UNAUTHORIZED")
 
+   msgs.push(twee)
+    res.send("Ok")
+})
 app.listen(5000)
