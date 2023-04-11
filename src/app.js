@@ -25,16 +25,16 @@ app.post('/tweets' , (req , res)=>{
 })
 
 app.get('/tweets' , (req , res)=>{
+    const pegaUltimos10 = msgs.slice(-10)
 
 
     /*busca a msg do usuario dentro da lista dos usuarios quardando com o find dentro do objeto */
-    const PegaMsg = msgs.map((msg)=>{
+    const PegaMsg = pegaUltimos10.map((msg)=>{
         const pessoa =usuario.find((e)=>e.username === msg.username)
         return {...msg ,avatar : pessoa.avatar}
 
     })
-    res.send(PegaMsg.slice-10)
-    /*slice -10 esta pegando os ultimos as ultimas 10 msgs !*/
+    res.send(PegaMsg)
  })
 const PORT = 5000
 app.listen(PORT)
