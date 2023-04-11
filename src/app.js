@@ -18,9 +18,17 @@ app.post('/sign-up' , (req , res)=>{
 app.post('/tweets' , (req , res)=>{
    const twee =req.body
    const verificaLogin  = usuario.find(cadastro => cadastro.username === twee.username)
-   if(!verificaLogin) res.send("UNAUTHORIZED")
+   if(!verificaLogin) return res.send("UNAUTHORIZED")
 
    msgs.push(twee)
-    res.send("Ok")
+    res.send("OK")
 })
+
+app.post('/tweets' , (req , res)=>{
+  
+ })
+/*app.get('/tweets' , (req , res)=>{
+    const pegaMsg =msgs.map(twee=> {
+    })
+})*/
 app.listen(5000)
